@@ -1,12 +1,25 @@
 <DOCTYPE html!>
 <html>
+	<head>
+		
+		<meta charset="UTF-8"/>
+	</head>
 	<body>
-		Ciaone
-		<span id="message"></span>
+		<textarea id="sourceTA" rows="10" cols="82"></textarea>
+		<hr/>
+		<button id="runBtn" onClick="run()">Convert</button>
+		<hr/>
+		<div id="targetDiv"></div>
 	</body>
+	<script src="https://unpkg.com/showdown/dist/showdown.min.js"></script>
 	<script>
-		window.addEventListener("load", (ev) => {
-			document.getElementById("message").innerHTML = "Addio!"
-		});
+			window.addEventListener("load", (ev)=>{
+			  var text = document.getElementById('sourceTA').value,
+			      target = document.getElementById('targetDiv'),
+			      converter = new showdown.Converter(),
+			      html = converter.makeHtml(text);
+			    
+			    target.innerHTML = html;
+			});
 	</script>
 </html>
